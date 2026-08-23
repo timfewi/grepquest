@@ -1,0 +1,29 @@
+{
+  "id": "literal-001",
+  "act": 1,
+  "title": "First Signal",
+  "prompt": "Print lines containing ERROR from vault.log.",
+  "tags": [
+    "literal"
+  ],
+  "difficulty": 1,
+  "fixtures": {
+    "vault.log": "INFO opened\nERROR seal broken\nWARN dust\nERROR intruder\n"
+  },
+  "want_output": "ERROR seal broken\nERROR intruder\n",
+  "want_exit": 0,
+  "hints": [
+    "grep takes a pattern and a file.",
+    "Use: grep PATTERN FILE"
+  ],
+  "explanation": "grep prints every input line containing the pattern.",
+  "hidden_tests": [
+    {
+      "fixtures": {
+        "vault.log": "ERROR first\nINFO calm\nERROR last\n"
+      },
+      "want_output": "ERROR first\nERROR last\n",
+      "want_exit": 0
+    }
+  ]
+}

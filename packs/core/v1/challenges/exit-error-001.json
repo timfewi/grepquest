@@ -1,0 +1,21 @@
+{
+  "id": "exit-error-001",
+  "act": 1,
+  "title": "Broken Passage",
+  "prompt": "Search missing.txt and observe grep's operational-error exit code. The error text is ignored; no stdout is expected.",
+  "tags": [
+    "exit-code",
+    "error"
+  ],
+  "difficulty": 2,
+  "fixtures": {
+    "present.txt": "nothing\n"
+  },
+  "want_output": "",
+  "want_exit": 2,
+  "hints": [
+    "The requested file intentionally does not exist.",
+    "Run grep rune missing.txt."
+  ],
+  "explanation": "GNU grep uses exit code 2 for an operational error."
+}

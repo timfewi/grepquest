@@ -1,0 +1,24 @@
+{
+  "id": "multiple-pattern-001",
+  "act": 2,
+  "title": "Double Bounty",
+  "prompt": "Print lines containing goblin or troll using two -e patterns.",
+  "tags": [
+    "multiple-pattern",
+    "-e"
+  ],
+  "difficulty": 2,
+  "fixtures": {
+    "bounties.txt": "goblin scout\nslime\ntroll guard\n"
+  },
+  "want_output": "goblin scout\ntroll guard\n",
+  "want_exit": 0,
+  "hints": [
+    "grep accepts more than one -e expression.",
+    "Use grep -e goblin -e troll bounties.txt."
+  ],
+  "explanation": "Each -e supplies another pattern; a line matching any is selected.",
+  "required_args": [
+    "-e"
+  ]
+}

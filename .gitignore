@@ -1,0 +1,16 @@
+/result
+/result-*
+/dist/
+/grepquest.svg
+/grepquest-proof.json
+/docs/LANDING_PAGE_DESIGN_BRIEF.md
+/move/grepquest/build/
+.direnv/
+.env
+.env.*
+!.env.example
+*.db
+*.prof
+coverage.out
+.DS_Store
+/docs/design-directions

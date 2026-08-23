@@ -1,0 +1,22 @@
+{
+  "id": "literal-002",
+  "act": 1,
+  "title": "Twin Archives",
+  "prompt": "Find key in both east.txt and west.txt, preserving grep's filename prefixes.",
+  "tags": [
+    "literal",
+    "files"
+  ],
+  "difficulty": 1,
+  "fixtures": {
+    "east.txt": "key amber\ndust\n",
+    "west.txt": "moss\nkey iron\n"
+  },
+  "want_output": "east.txt:key amber\nwest.txt:key iron\n",
+  "want_exit": 0,
+  "hints": [
+    "Pass both filenames to grep.",
+    "Use grep key east.txt west.txt."
+  ],
+  "explanation": "With multiple files, grep prefixes matching lines with their filename."
+}

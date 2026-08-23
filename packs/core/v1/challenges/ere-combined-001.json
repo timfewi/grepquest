@@ -1,0 +1,26 @@
+{
+  "id": "ere-combined-001",
+  "act": 2,
+  "title": "Foundry Trial",
+  "prompt": "Print IDs shaped like Q- followed by exactly three digits from ids.txt.",
+  "tags": [
+    "ere",
+    "class",
+    "quantifier",
+    "anchor"
+  ],
+  "difficulty": 4,
+  "fixtures": {
+    "ids.txt": "Q-007\nQ-42\nX-123\nQ-999\nQ-1234\n"
+  },
+  "want_output": "Q-007\nQ-999\n",
+  "want_exit": 0,
+  "hints": [
+    "Combine anchors, a digit class, and a count.",
+    "Use grep -E '^Q-[[:digit:]]{3}$'."
+  ],
+  "explanation": "Anchors, classes, and bounded repetition compose into precise validation patterns.",
+  "required_args": [
+    "-E"
+  ]
+}

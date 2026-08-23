@@ -1,0 +1,4 @@
+interface:
+  display_name: "GrepQuest UI Explore"
+  short_description: "Explore distinctive visual directions"
+  default_prompt: "Use $grepquest-ui-explore to create three visual directions for this GrepQuest interface."

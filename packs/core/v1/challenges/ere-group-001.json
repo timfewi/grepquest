@@ -1,0 +1,25 @@
+{
+  "id": "ere-group-001",
+  "act": 2,
+  "title": "Colored Keys",
+  "prompt": "Print exactly red-key or blue-key from keys.txt.",
+  "tags": [
+    "ere",
+    "group",
+    "alternation"
+  ],
+  "difficulty": 3,
+  "fixtures": {
+    "keys.txt": "red-key\nblue-key\ngreen-key\nred-door\n"
+  },
+  "want_output": "red-key\nblue-key\n",
+  "want_exit": 0,
+  "hints": [
+    "Group the color alternatives.",
+    "Use grep -E '^(red|blue)-key$'."
+  ],
+  "explanation": "ERE groups alternatives with parentheses.",
+  "required_args": [
+    "-E"
+  ]
+}

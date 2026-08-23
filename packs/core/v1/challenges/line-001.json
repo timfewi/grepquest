@@ -1,0 +1,30 @@
+{
+  "id": "line-001",
+  "act": 1,
+  "title": "Exact Inscription",
+  "prompt": "Print only the line whose complete contents are READY from state.txt.",
+  "tags": [
+    "line",
+    "-x"
+  ],
+  "difficulty": 1,
+  "fixtures": {
+    "state.txt": "READY\nNOT READY\nREADY NOW\n"
+  },
+  "want_output": "READY\n",
+  "want_exit": 0,
+  "hints": [
+    "The entire line must match.",
+    "Use grep -x."
+  ],
+  "explanation": "-x accepts only matches spanning the complete line.",
+  "hidden_tests": [
+    {
+      "fixtures": {
+        "state.txt": "READY!\nREADY\n READY\n"
+      },
+      "want_output": "READY\n",
+      "want_exit": 0
+    }
+  ]
+}

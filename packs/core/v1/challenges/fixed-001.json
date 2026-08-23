@@ -1,0 +1,30 @@
+{
+  "id": "fixed-001",
+  "act": 1,
+  "title": "Literal Rune",
+  "prompt": "Find the literal text a.b in runes.txt (the dot is not a wildcard).",
+  "tags": [
+    "fixed",
+    "-F"
+  ],
+  "difficulty": 1,
+  "fixtures": {
+    "runes.txt": "a.b\nacb\na-b\n"
+  },
+  "want_output": "a.b\n",
+  "want_exit": 0,
+  "hints": [
+    "Treat the pattern as a fixed string.",
+    "Use grep -F."
+  ],
+  "explanation": "-F interprets the pattern literally rather than as a regular expression.",
+  "hidden_tests": [
+    {
+      "fixtures": {
+        "runes.txt": "axb\na.b\naab\n"
+      },
+      "want_output": "a.b\n",
+      "want_exit": 0
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "ere-class-001",
+  "act": 2,
+  "title": "Hex Ward",
+  "prompt": "Print lines containing only uppercase hexadecimal characters from hex.txt.",
+  "tags": [
+    "ere",
+    "class",
+    "anchor"
+  ],
+  "difficulty": 3,
+  "fixtures": {
+    "hex.txt": "A0FF\nbeef\nG123\n99\n"
+  },
+  "want_output": "A0FF\n99\n",
+  "want_exit": 0,
+  "hints": [
+    "Use an uppercase range plus digits.",
+    "Use grep -E '^[A-F0-9]+$'."
+  ],
+  "explanation": "Anchors and + constrain the entire line to the chosen class.",
+  "required_args": [
+    "-E"
+  ]
+}

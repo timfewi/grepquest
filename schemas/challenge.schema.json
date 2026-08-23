@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://grepquest.dev/schemas/challenge-v1.json",
+  "title": "GrepQuest challenge v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "act", "title", "prompt", "tags", "difficulty", "fixtures", "want_output", "want_exit", "hints", "explanation"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+    "act": {"type": "integer", "minimum": 1, "maximum": 2},
+    "title": {"type": "string", "maxLength": 80},
+    "prompt": {"type": "string", "maxLength": 500},
+    "tags": {"type": "array", "items": {"type": "string"}, "minItems": 1, "uniqueItems": true},
+    "difficulty": {"type": "integer", "minimum": 1, "maximum": 5},
+    "fixtures": {"type": "object", "additionalProperties": {"type": "string"}},
+    "want_output": {"type": "string"},
+    "want_exit": {"type": "integer", "minimum": 0, "maximum": 2},
+    "hints": {"type": "array", "items": {"type": "string"}, "minItems": 2},
+    "explanation": {"type": "string"},
+    "required_args": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "hidden_tests": {"type": "array", "items": {"$ref": "#/$defs/test"}}
+  },
+  "$defs": {"test": {"type": "object", "additionalProperties": false, "required": ["fixtures", "want_output", "want_exit"], "properties": {"fixtures": {"type": "object", "additionalProperties": {"type": "string"}}, "want_output": {"type": "string"}, "want_exit": {"type": "integer", "minimum": 0, "maximum": 2}}}}
+}

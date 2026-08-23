@@ -1,0 +1,30 @@
+{
+  "id": "case-001",
+  "act": 1,
+  "title": "Whispered Signals",
+  "prompt": "Print every case variation of warning from alarms.log.",
+  "tags": [
+    "case",
+    "-i"
+  ],
+  "difficulty": 1,
+  "fixtures": {
+    "alarms.log": "warning low\nWARNING high\nWarning medium\nsafe\n"
+  },
+  "want_output": "warning low\nWARNING high\nWarning medium\n",
+  "want_exit": 0,
+  "hints": [
+    "Case should not matter.",
+    "Use grep -i."
+  ],
+  "explanation": "-i performs case-insensitive matching.",
+  "hidden_tests": [
+    {
+      "fixtures": {
+        "alarms.log": "WaRnInG mixed\nclear\nwarning low\n"
+      },
+      "want_output": "WaRnInG mixed\nwarning low\n",
+      "want_exit": 0
+    }
+  ]
+}

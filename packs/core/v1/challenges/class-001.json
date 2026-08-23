@@ -1,0 +1,30 @@
+{
+  "id": "class-001",
+  "act": 2,
+  "title": "Numbered Seals",
+  "prompt": "Print seal lines ending in one digit from seals.txt.",
+  "tags": [
+    "bre",
+    "class"
+  ],
+  "difficulty": 2,
+  "fixtures": {
+    "seals.txt": "seal-1\nseal-x\nseal-22\nseal-7\n"
+  },
+  "want_output": "seal-1\nseal-7\n",
+  "want_exit": 0,
+  "hints": [
+    "Use a digit character class and an end anchor.",
+    "Try 'seal-[[:digit:]]$'."
+  ],
+  "explanation": "POSIX character classes are portable and $ prevents extra trailing digits.",
+  "hidden_tests": [
+    {
+      "fixtures": {
+        "seals.txt": "seal-0\nseal-10\nseal-a\nseal-9\n"
+      },
+      "want_output": "seal-0\nseal-9\n",
+      "want_exit": 0
+    }
+  ]
+}

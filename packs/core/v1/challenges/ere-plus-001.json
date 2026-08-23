@@ -1,0 +1,24 @@
+{
+  "id": "ere-plus-001",
+  "act": 2,
+  "title": "Echoing Horn",
+  "prompt": "Print lines consisting of ha followed by one or more exclamation marks.",
+  "tags": [
+    "ere",
+    "quantifier"
+  ],
+  "difficulty": 2,
+  "fixtures": {
+    "horn.txt": "ha\nha!\nha!!!\naha!\n"
+  },
+  "want_output": "ha!\nha!!!\n",
+  "want_exit": 0,
+  "hints": [
+    "Use ERE for the + quantifier.",
+    "Use grep -E '^ha!+$' horn.txt."
+  ],
+  "explanation": "In ERE, + means one or more of the preceding expression.",
+  "required_args": [
+    "-E"
+  ]
+}

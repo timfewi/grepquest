@@ -1,0 +1,31 @@
+{
+  "id": "anchor-end-001",
+  "act": 2,
+  "title": "Rear Guard",
+  "prompt": "Print lines ending in .conf from files.txt.",
+  "tags": [
+    "bre",
+    "anchor",
+    "escaping"
+  ],
+  "difficulty": 2,
+  "fixtures": {
+    "files.txt": "app.conf\nconf.old\nweirdXconf\ndb.conf\n"
+  },
+  "want_output": "app.conf\ndb.conf\n",
+  "want_exit": 0,
+  "hints": [
+    "Anchor the end and make the dot literal.",
+    "Use a quoted pattern like '\\.conf$'."
+  ],
+  "explanation": "$ anchors the end; escaping the dot prevents wildcard matching.",
+  "hidden_tests": [
+    {
+      "fixtures": {
+        "files.txt": "x.conf\nx.conf.bak\nyXconf\n"
+      },
+      "want_output": "x.conf\n",
+      "want_exit": 0
+    }
+  ]
+}

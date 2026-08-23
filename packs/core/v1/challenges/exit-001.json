@@ -1,0 +1,29 @@
+{
+  "id": "exit-001",
+  "act": 1,
+  "title": "Silent Gate",
+  "prompt": "Search for dragon in empty.txt. No output and exit code 1 is the correct result.",
+  "tags": [
+    "exit-code"
+  ],
+  "difficulty": 2,
+  "fixtures": {
+    "empty.txt": "kobold\nslime\n"
+  },
+  "want_output": "",
+  "want_exit": 1,
+  "hints": [
+    "A missing match is not a grep error.",
+    "Run grep dragon empty.txt."
+  ],
+  "explanation": "grep returns 1 when no lines match; operational errors return 2.",
+  "hidden_tests": [
+    {
+      "fixtures": {
+        "empty.txt": "wyvern\nrat\n"
+      },
+      "want_output": "",
+      "want_exit": 1
+    }
+  ]
+}

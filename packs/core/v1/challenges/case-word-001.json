@@ -1,0 +1,25 @@
+{
+  "id": "case-word-001",
+  "act": 1,
+  "title": "Named Beast",
+  "prompt": "Find the whole word ORC regardless of case in scouts.txt.",
+  "tags": [
+    "case",
+    "word"
+  ],
+  "difficulty": 2,
+  "fixtures": {
+    "scouts.txt": "orc camp\nORCHID\none ORC\nOrcish\n"
+  },
+  "want_output": "orc camp\none ORC\n",
+  "want_exit": 0,
+  "hints": [
+    "Combine case-insensitive and whole-word modes.",
+    "Use grep -iw ORC scouts.txt."
+  ],
+  "explanation": "Options can be combined: -i ignores case and -w rejects partial words.",
+  "required_args": [
+    "-i",
+    "-w"
+  ]
+}

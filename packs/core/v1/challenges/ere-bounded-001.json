@@ -1,0 +1,24 @@
+{
+  "id": "ere-bounded-001",
+  "act": 2,
+  "title": "Measured Knock",
+  "prompt": "Print knock followed by two through four o characters from knocks.txt.",
+  "tags": [
+    "ere",
+    "quantifier"
+  ],
+  "difficulty": 3,
+  "fixtures": {
+    "knocks.txt": "knocko\nknockoo\nknockooo\nknockoooo\nknockooooo\n"
+  },
+  "want_output": "knockoo\nknockooo\nknockoooo\n",
+  "want_exit": 0,
+  "hints": [
+    "ERE interval braces do not need backslashes.",
+    "Use grep -E '^knocko{2,4}$'."
+  ],
+  "explanation": "ERE {m,n} bounds repetition inclusively.",
+  "required_args": [
+    "-E"
+  ]
+}

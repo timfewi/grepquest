@@ -1,0 +1,25 @@
+{
+  "id": "line-case-001",
+  "act": 1,
+  "title": "Sealed State",
+  "prompt": "Print complete lines equal to sealed, in any case, from doors.txt.",
+  "tags": [
+    "line",
+    "case"
+  ],
+  "difficulty": 2,
+  "fixtures": {
+    "doors.txt": "SEALED\nsealed shut\nSealed\nunsealed\n"
+  },
+  "want_output": "SEALED\nSealed\n",
+  "want_exit": 0,
+  "hints": [
+    "Combine whole-line and case-insensitive matching.",
+    "Use grep -ix sealed doors.txt."
+  ],
+  "explanation": "-x constrains the complete line while -i folds case.",
+  "required_args": [
+    "-i",
+    "-x"
+  ]
+}

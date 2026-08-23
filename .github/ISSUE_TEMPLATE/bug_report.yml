@@ -1,0 +1,64 @@
+name: Bug report
+description: Report a reproducible problem in GrepQuest.
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a problem. Do not include credentials, wallet material, private fixtures, or other secrets.
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Preflight
+      options:
+        - label: I searched existing issues for the same problem.
+          required: true
+        - label: This report does not contain a security vulnerability or sensitive data.
+          required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What happened, and what did you expect instead?
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: Provide the smallest sequence of commands or steps that reproduces the problem.
+      placeholder: |
+        1. Run `...`
+        2. Select `...`
+        3. Observe `...`
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: GrepQuest version
+      description: Paste the output of `grepquest version` or the source commit.
+      placeholder: grepquest 0.1.0-dev
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Include OS, architecture, Nix version, and relevant Sui or Firecracker versions.
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Sanitized output
+      description: Add minimal logs after removing tokens, paths, wallet data, and personal information.
+      render: text

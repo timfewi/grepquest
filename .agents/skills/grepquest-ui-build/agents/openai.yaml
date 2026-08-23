@@ -1,0 +1,4 @@
+interface:
+  display_name: "GrepQuest UI Build"
+  short_description: "Build the selected responsive interface"
+  default_prompt: "Use $grepquest-ui-build to implement this selected GrepQuest web design."

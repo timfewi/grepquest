@@ -1,0 +1,4 @@
+interface:
+  display_name: "GrepQuest UI"
+  short_description: "Route GrepQuest web design work"
+  default_prompt: "Use $grepquest-ui to route this GrepQuest website design task."

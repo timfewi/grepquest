@@ -1,0 +1,21 @@
+{
+  "id": "escape-plus-001",
+  "act": 2,
+  "title": "Literal Spark",
+  "prompt": "Using BRE, find the literal text +1 in charges.txt.",
+  "tags": [
+    "bre",
+    "escaping"
+  ],
+  "difficulty": 2,
+  "fixtures": {
+    "charges.txt": "+1 charge\n11 charge\nplus one\n"
+  },
+  "want_output": "+1 charge\n",
+  "want_exit": 0,
+  "hints": [
+    "In GNU BRE, an unescaped plus is literal.",
+    "Use grep '+1' charges.txt."
+  ],
+  "explanation": "BRE and ERE assign different meanings to some metacharacters."
+}

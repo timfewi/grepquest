@@ -1,0 +1,24 @@
+{
+  "id": "ere-optional-001",
+  "act": 2,
+  "title": "Armored Spelling",
+  "prompt": "Print both armor and armour from scroll.txt.",
+  "tags": [
+    "ere",
+    "quantifier"
+  ],
+  "difficulty": 2,
+  "fixtures": {
+    "scroll.txt": "armor\narmour\narmorer\n"
+  },
+  "want_output": "armor\narmour\n",
+  "want_exit": 0,
+  "hints": [
+    "The u is optional.",
+    "Use grep -E '^armou?r$'."
+  ],
+  "explanation": "ERE ? makes the preceding atom optional.",
+  "required_args": [
+    "-E"
+  ]
+}

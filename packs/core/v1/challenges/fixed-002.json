@@ -1,0 +1,24 @@
+{
+  "id": "fixed-002",
+  "act": 1,
+  "title": "Bracket Trap",
+  "prompt": "Find the literal string [vault] in marks.txt.",
+  "tags": [
+    "fixed",
+    "quoting"
+  ],
+  "difficulty": 1,
+  "fixtures": {
+    "marks.txt": "[vault]\nv\na\n"
+  },
+  "want_output": "[vault]\n",
+  "want_exit": 0,
+  "hints": [
+    "Brackets are regex syntax unless fixed mode is used.",
+    "Use grep -F '[vault]' marks.txt."
+  ],
+  "explanation": "-F avoids interpreting bracket expressions.",
+  "required_args": [
+    "-F"
+  ]
+}

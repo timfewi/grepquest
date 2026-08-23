@@ -1,0 +1,114 @@
+{
+  "Version": "1",
+  "ID": "core",
+  "Title": "The Signal Cellar \u0026 Regex Foundry",
+  "GrepVersion": "GNU grep 3.12",
+  "License": "CC-BY-4.0",
+  "PackSHA256": "4cb4fdf581e08159dc0d645ce732d18767b50e450e69e8ae9aa734b1497fc4b6",
+  "Challenges": [
+    {
+      "ID": "anchor-end-001",
+      "SHA256": "61bedf4e71cc5d06209fe5077f47049fbe5274f29ef289bae563ac0db8d13205"
+    },
+    {
+      "ID": "anchor-start-001",
+      "SHA256": "042e6f52406c8b8941b2ad9cf5d41848da123e25ea211935d4f8306f468ec8a5"
+    },
+    {
+      "ID": "bre-group-001",
+      "SHA256": "4de7d49ded153ce250b07bdbb80fa476ac37c13dacf695de6985ae5bd1fb0545"
+    },
+    {
+      "ID": "bre-repeat-001",
+      "SHA256": "001d7209a56e5b8f0e4cb419437c445bf8c46dcb4dfd732b0c184da77103ed05"
+    },
+    {
+      "ID": "case-001",
+      "SHA256": "4f5bf9f4d776e9dfc8547ada0d6aa8dac6e3eb5f892201938b138a45f24e1863"
+    },
+    {
+      "ID": "case-word-001",
+      "SHA256": "de678f15ffb5b1f7279af6c28b6f50222e59b9b067a7f1cce8169d735cd31705"
+    },
+    {
+      "ID": "class-001",
+      "SHA256": "d951af164445fcaf12430d880e0d1ea64959b303a804a727c24db4fcae138a11"
+    },
+    {
+      "ID": "ere-001",
+      "SHA256": "9373465a13beb231b082cea6b2894e7967b49d5f8b8464f66d98f7312bcd383e"
+    },
+    {
+      "ID": "ere-bounded-001",
+      "SHA256": "b2b13d370a493f9fc26cce288f7d482be685f79e08c293bd4fb8a1bdbcf7f656"
+    },
+    {
+      "ID": "ere-class-001",
+      "SHA256": "2b7a0a937b6e054cf2856bdd1e5bca61c281b6c9882342b32ea9b262f41ce0d5"
+    },
+    {
+      "ID": "ere-combined-001",
+      "SHA256": "cdbfc4e6500f8318bffabc360cceb10eb596576f00981aaabbc223b5b0479c1f"
+    },
+    {
+      "ID": "ere-group-001",
+      "SHA256": "938d94f1d18e7c1b7e96a72595502597855331b85f01cc3208560aa16a1ab69a"
+    },
+    {
+      "ID": "ere-optional-001",
+      "SHA256": "15ce8f59820a2e82c566c1d868750dab98a0af87e4ca69b61d4ffd8581c54088"
+    },
+    {
+      "ID": "ere-plus-001",
+      "SHA256": "4a0d9158abb4d2cdb30c79c4ddf2adb34751516d3fe8d2bc3466d8bcb1e9dd0f"
+    },
+    {
+      "ID": "escape-plus-001",
+      "SHA256": "7587db41b7e16f7f02e79c7116dd1415938a20a559d1846f6582a8cfb1892cad"
+    },
+    {
+      "ID": "exit-001",
+      "SHA256": "d3d3b61602cd7d43f7959a799e159dd13ada3859908c817c50327a229f4c7805"
+    },
+    {
+      "ID": "exit-error-001",
+      "SHA256": "8a556dcb0a95b7b03588e66166d707b5ff058fbaaf6ca86a8f654222f80be6c8"
+    },
+    {
+      "ID": "fixed-001",
+      "SHA256": "87eed5cf9914b61e853a28ca0fad2e07888d0ff460f9dc0837b3d35d4c4629a6"
+    },
+    {
+      "ID": "fixed-002",
+      "SHA256": "f88f9f583cbcb60c9984266236882237eec1d1c3b82cc36076a11298a20bf158"
+    },
+    {
+      "ID": "line-001",
+      "SHA256": "98d9f7b8c04c5ed17d400226ae47ea8c6fd92ac0b37fbc2659ef5ab674f230e8"
+    },
+    {
+      "ID": "line-case-001",
+      "SHA256": "9a88e9828d5f2acff50d824faf401fe580348a0629ea6aa63d6c1eedfac2dace"
+    },
+    {
+      "ID": "literal-001",
+      "SHA256": "0652c757e82ec67e95f353bfe345b4d26d9bdd8b454137539bc50183e03d7b48"
+    },
+    {
+      "ID": "literal-002",
+      "SHA256": "5f0d4d113518db99b6813651d42465a30293dfa8b00b5d2af8da7782c29a6a27"
+    },
+    {
+      "ID": "multiple-pattern-001",
+      "SHA256": "8bfa43bdee07fc598f22c450322fa2afd0536e361872825f77f49eacebbc0fb0"
+    },
+    {
+      "ID": "quote-space-001",
+      "SHA256": "aad5792fcf31f415c67d5e491cb0b9db1e6624961a1ac28d10aa78e8092e2af0"
+    },
+    {
+      "ID": "word-001",
+      "SHA256": "f667a6263cd27bfd7ec827706f4148dd3b2f555dc8b9fe968955e7479cfeedc4"
+    }
+  ]
+}

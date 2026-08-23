@@ -1,0 +1,30 @@
+{
+  "id": "word-001",
+  "act": 1,
+  "title": "Whole Sigil",
+  "prompt": "Print lines containing the whole word cat from beasts.txt.",
+  "tags": [
+    "word",
+    "-w"
+  ],
+  "difficulty": 1,
+  "fixtures": {
+    "beasts.txt": "cat\nscatter\ncat nap\nbobcat\n"
+  },
+  "want_output": "cat\ncat nap\n",
+  "want_exit": 0,
+  "hints": [
+    "Partial words must not match.",
+    "Use grep -w."
+  ],
+  "explanation": "-w requires word boundaries around the match.",
+  "hidden_tests": [
+    {
+      "fixtures": {
+        "beasts.txt": "catfish\na cat sleeps\ncat\n"
+      },
+      "want_output": "a cat sleeps\ncat\n",
+      "want_exit": 0
+    }
+  ]
+}

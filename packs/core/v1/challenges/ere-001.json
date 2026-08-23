@@ -1,0 +1,31 @@
+{
+  "id": "ere-001",
+  "act": 2,
+  "title": "Forked Passage",
+  "prompt": "Print lines containing either sword or shield from loot.txt.",
+  "tags": [
+    "ere",
+    "-E",
+    "alternation"
+  ],
+  "difficulty": 2,
+  "fixtures": {
+    "loot.txt": "iron sword\nwood staff\nbronze shield\nboots\n"
+  },
+  "want_output": "iron sword\nbronze shield\n",
+  "want_exit": 0,
+  "hints": [
+    "Alternation is clearest in ERE mode.",
+    "Use grep -E 'sword|shield'."
+  ],
+  "explanation": "-E enables extended regular expressions where | expresses alternatives.",
+  "hidden_tests": [
+    {
+      "fixtures": {
+        "loot.txt": "shield wall\nwand\nsword edge\n"
+      },
+      "want_output": "shield wall\nsword edge\n",
+      "want_exit": 0
+    }
+  ]
+}

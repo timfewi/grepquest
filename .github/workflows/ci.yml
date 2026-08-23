@@ -1,0 +1,86 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  go:
+    name: Go checks
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Go
+        uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          go-version-file: go.mod
+          cache-dependency-path: go.sum
+
+      - name: Verify modules
+        run: go mod verify
+
+      - name: Check formatting
+        shell: bash
+        run: |
+          unformatted="$(git ls-files -z -- '*.go' | xargs -0 --no-run-if-empty gofmt -l)"
+          if [[ -n "$unformatted" ]]; then
+            printf 'Go files need formatting:\n%s\n' "$unformatted" >&2
+            exit 1
+          fi
+
+      - name: Vet
+        run: go vet ./...
+
+      - name: Test with race detector
+        run: go test -race ./...
+
+      - name: Build CLI
+        run: go build -trimpath -o /tmp/grepquest ./cmd/grepquest
+
+      - name: Check embedded version
+        run: test "$(/tmp/grepquest version)" = "grepquest $(tr -d '\n' < internal/buildinfo/VERSION)"
+
+  nix-and-move:
+    name: Nix and Sui Move checks
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@13d8dd58da0234aa297dedd986986ccb8e7f3e24 # v31.11.1
+
+      - name: Check recipe formatting
+        run: nix develop path:.# --command just --fmt --check
+
+      - name: Check all flake systems
+        run: nix flake check path:.# --all-systems
+
+      - name: Build Nix package
+        run: nix build path:.#
+
+      - name: Lint Go
+        run: nix develop path:.# --command just lint
+
+      - name: Check Go vulnerabilities
+        run: nix develop path:.# --command govulncheck ./...
+
+      - name: Build and test Sui Move package
+        run: nix develop path:.# --command just move-check

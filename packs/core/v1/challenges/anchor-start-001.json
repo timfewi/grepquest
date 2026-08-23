@@ -1,0 +1,30 @@
+{
+  "id": "anchor-start-001",
+  "act": 2,
+  "title": "Vanguard Anchor",
+  "prompt": "Print lines that begin with TODO from tasks.txt.",
+  "tags": [
+    "bre",
+    "anchor"
+  ],
+  "difficulty": 2,
+  "fixtures": {
+    "tasks.txt": "TODO forge key\nlate TODO\nTODO map vault\n"
+  },
+  "want_output": "TODO forge key\nTODO map vault\n",
+  "want_exit": 0,
+  "hints": [
+    "Anchor the pattern at the beginning.",
+    "Use ^ at the pattern start."
+  ],
+  "explanation": "^ anchors a regular expression to the start of a line.",
+  "hidden_tests": [
+    {
+      "fixtures": {
+        "tasks.txt": "TODO one\n TODO two\ndone TODO\n"
+      },
+      "want_output": "TODO one\n",
+      "want_exit": 0
+    }
+  ]
+}

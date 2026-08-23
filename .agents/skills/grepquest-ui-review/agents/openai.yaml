@@ -1,0 +1,4 @@
+interface:
+  display_name: "GrepQuest UI Review"
+  short_description: "Audit rendered UI against the brief"
+  default_prompt: "Use $grepquest-ui-review to audit this GrepQuest interface before handoff."

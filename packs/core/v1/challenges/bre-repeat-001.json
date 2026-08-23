@@ -1,0 +1,21 @@
+{
+  "id": "bre-repeat-001",
+  "act": 2,
+  "title": "Paired Digits",
+  "prompt": "Using BRE, print lines made of exactly two digits from codes.txt.",
+  "tags": [
+    "bre",
+    "quantifier"
+  ],
+  "difficulty": 3,
+  "fixtures": {
+    "codes.txt": "7\n42\n123\nab\n09\n"
+  },
+  "want_output": "42\n09\n",
+  "want_exit": 0,
+  "hints": [
+    "BRE interval braces must be escaped.",
+    "Use '^[[:digit:]]\\{2\\}$'."
+  ],
+  "explanation": "In BRE, escaped braces form an interval quantifier."
+}

@@ -1,0 +1,22 @@
+{
+  "id": "bre-group-001",
+  "act": 2,
+  "title": "Old Binding",
+  "prompt": "Using BRE grouping, print exactly abab or ababab from chants.txt.",
+  "tags": [
+    "bre",
+    "group",
+    "quantifier"
+  ],
+  "difficulty": 4,
+  "fixtures": {
+    "chants.txt": "ab\nabab\nababab\nabababab\n"
+  },
+  "want_output": "abab\nababab\n",
+  "want_exit": 0,
+  "hints": [
+    "BRE groups and intervals are escaped.",
+    "Use '^\\(ab\\)\\{2,3\\}$'."
+  ],
+  "explanation": "BRE uses escaped parentheses and braces for groups and intervals."
+}

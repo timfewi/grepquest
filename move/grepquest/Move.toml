@@ -1,0 +1,7 @@
+[package]
+name = "grepquest"
+edition = "2024"
+license = "MIT"
+
+[addresses]
+grepquest = "0x0"

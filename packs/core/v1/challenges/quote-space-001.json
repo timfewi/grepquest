@@ -1,0 +1,21 @@
+{
+  "id": "quote-space-001",
+  "act": 2,
+  "title": "Two-Word Charm",
+  "prompt": "Print lines containing the phrase silver key from notes.txt.",
+  "tags": [
+    "quoting",
+    "literal"
+  ],
+  "difficulty": 1,
+  "fixtures": {
+    "notes.txt": "silver key found\nsilver\nkey silver\n"
+  },
+  "want_output": "silver key found\n",
+  "want_exit": 0,
+  "hints": [
+    "The shell-like parser must receive the phrase as one argument.",
+    "Quote 'silver key'."
+  ],
+  "explanation": "Quoting preserves spaces inside a single pattern argument."
+}
