@@ -13,6 +13,10 @@ whether a solution is correct.
 > sandbox is for trusted local development and is not suitable for hosting
 > untrusted users.
 
+![GrepQuest Living Terminal showing the mission, Ranger, and command buffer.][readme-tui]
+
+[readme-tui]: brand/readme/grepquest-living-terminal.png
+
 ## Install and run
 
 Linux with Nix is the supported environment:

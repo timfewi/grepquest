@@ -4,6 +4,10 @@
 with the built-in image generation workflow on August 23, 2026. It is intended
 to render at a 16:9 README aspect ratio.
 
+`grepquest-living-terminal.png` is the 1920 x 1200 application screenshot shown
+after the introductory README copy. It presents the mission, exported ASCII
+Motion Ranger, command buffer, and progression HUD in the wide TUI layout.
+
 The prompt used the approved Ranger as its identity reference and placed him at
 a stone terminal in the Signal Cellar. The exact command
 `$ grep ERROR vault.log` emits a signal-green match beam toward a Q-shaped exit,
