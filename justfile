@@ -20,6 +20,18 @@ cli *args:
 play:
     go run ./cmd/grepquest play
 
+# Start the sandboxed Ascii Motion MCP server. Pass --live explicitly for browser sync.
+ascii-motion *args:
+    grepquest-ascii-motion {{ args }}
+
+# Regenerate the responsive Ranger runtime asset from the reviewed Ascii Motion project.
+ranger-build:
+    go generate ./internal/tui/rangerart
+
+# Regenerate transparent PNG brand exports from the production SVG sources.
+brand-build:
+    bash brand/build.sh
+
 # Format all Go packages.
 fmt:
     go fmt ./...
@@ -78,3 +90,11 @@ vm-build:
 # Build and boot the real Firecracker acceptance VM; requires writable /dev/kvm.
 vm-test:
     grepquest-test-firecracker
+
+# Audit a pre-provisioned production Firecracker jail and cgroup boundary.
+vm-host-check:
+    grepquest-firecracker-host-check
+
+# Build a host CLI archive with checksums and dependency license texts.
+release-bundle output="dist":
+    bash tools/release-bundle.sh "{{ output }}"

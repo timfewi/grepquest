@@ -20,6 +20,8 @@ host boundary has completed a separate production review.
    generated receipts, private fixtures, and machine-specific paths.
 6. Review dependency licenses and vulnerability results. Binary distributions
    must ship the required license texts described in `THIRD_PARTY_NOTICES.md`.
+7. Run `just release-bundle` from a clean tree. Inspect the generated dependency
+   manifest, archive contents, and SHA-256 checksum before uploading anything.
 
 ## GitHub repository settings
 
@@ -42,3 +44,5 @@ GitHub release are manual maintainer actions.
 Before a stable or publicly hosted release, complete Firecracker jailer/cgroup
 hardening, define supported platform/toolchain versions, and publish the Sui
 package IDs and upgrade-cap custody model if the optional social layer is used.
+Use `just vm-host-check` as a prerequisite audit, not as a substitute for the
+external production supervisor described in `docs/FIRECRACKER.md`.

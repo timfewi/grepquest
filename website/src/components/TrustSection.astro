@@ -1,0 +1,42 @@
+---
+const principles = [
+  {
+    index: "01",
+    title: "Deterministic by design",
+    copy: "Versioned challenges define expected results. Hidden variants test semantics, not luck.",
+  },
+  {
+    index: "02",
+    title: "Local by default",
+    copy: "Progress stays local. The core tutorial needs no account, wallet, API key, or network connection.",
+  },
+  {
+    index: "03",
+    title: "Built for recall",
+    copy: "Explanations and spaced reviews turn recognition into knowledge you can retrieve later.",
+  },
+];
+---
+
+<section class="section trust-section" id="why-it-works" aria-labelledby="trust-title">
+  <div class="page-shell">
+    <div class="section-heading trust-heading">
+      <p class="eyebrow">WHY IT WORKS · TRUST MODEL</p>
+      <h2 id="trust-title">The game can improvise.<br /><span>The judge cannot.</span></h2>
+      <p>
+        Optional AI may add cosmetic names, lore, and explanation variants. It never decides correctness, XP,
+        rarity, or item identity.
+      </p>
+    </div>
+
+    <ol class="trust-principles">
+      {principles.map((principle) => (
+        <li>
+          <span>{principle.index}</span>
+          <h3>{principle.title}</h3>
+          <p>{principle.copy}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

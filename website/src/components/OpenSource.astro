@@ -1,0 +1,62 @@
+---
+const repository = "https://github.com/timfewi/grepquest";
+---
+
+<section class="section open-source" id="open-source" aria-labelledby="open-title">
+  <div class="page-shell open-grid">
+    <div class="open-copy">
+      <p class="eyebrow">OPEN SOURCE · BUILT IN PUBLIC</p>
+      <h2 id="open-title">Free to play.<br />Open to shape.</h2>
+      <p class="large-copy">
+        GrepQuest runs locally, keeps its core path offline, and is developed in the open. Build a challenge,
+        improve the TUI, review the sandbox, translate a lesson, or tell us where the game gets confusing.
+      </p>
+      <div class="open-actions">
+        <a class="button" href={`${repository}/blob/main/CONTRIBUTING.md`}>Find a contribution path</a>
+        <a class="text-link" href={`${repository}/issues`}>Browse GitHub Issues</a>
+      </div>
+      <ul class="license-list">
+        <li><strong>MIT</strong><span>Source code</span></li>
+        <li><strong>CC BY 4.0</strong><span>Core challenge pack</span></li>
+        <li><strong>Local</strong><span>No paid service required</span></li>
+      </ul>
+    </div>
+
+    <div class="repository-map" aria-label="Repository areas open for contribution">
+      <div class="map-heading"><span>grepquest/</span><span>CORE V1</span></div>
+      <ul>
+        <li><span>├── cmd/grepquest</span><em>CLI</em></li>
+        <li><span>├── internal/tui</span><em>Go · Bubble Tea</em></li>
+        <li><span>├── packs/core/v1</span><em>26 challenges</em></li>
+        <li><span>├── move/grepquest</span><em>Optional Sui layer</em></li>
+        <li><span>├── docs</span><em>Learning · security</em></li>
+        <li><span>└── flake.nix</span><em>Reproducible environment</em></li>
+      </ul>
+      <div class="map-links">
+        <a href={`${repository}/blob/main/SECURITY.md`}>Security</a>
+        <a href={`${repository}/blob/main/CHANGELOG.md`}>Changelog</a>
+        <a href={`${repository}/blob/main/LICENSE`}>License</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="status-section" aria-labelledby="status-title">
+  <div class="page-shell">
+    <div class="section-heading split-heading compact-heading">
+      <div>
+        <p class="eyebrow">PROJECT STATUS · PRE-RELEASE</p>
+        <h2 id="status-title">Playable now.<br />Still being forged.</h2>
+      </div>
+      <p>
+        The 0.1.0-dev tutorial is usable today, but formats and integrations can still change. Expect rough edges
+        and help make the public beta stronger.
+      </p>
+    </div>
+    <ol class="status-track">
+      <li class="is-current"><span>Now · 0.1.0-dev</span><p>Core tutorial, local profiles, loot, deterministic judge.</p></li>
+      <li><span>Next</span><p>More acts, easier installation, TUI polish, external playtests.</p></li>
+      <li><span>Later</span><p>More CLI learning paths and optional public proofs.</p></li>
+    </ol>
+  </div>
+</section>

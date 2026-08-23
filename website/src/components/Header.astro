@@ -1,0 +1,47 @@
+---
+import { siGithub } from "simple-icons";
+
+const base = import.meta.env.BASE_URL;
+const repository = "https://github.com/timfewi/grepquest";
+const links = [
+  { href: "#how-it-plays", label: "How it plays" },
+  { href: "#why-it-works", label: "Why it works" },
+  { href: "#open-source", label: "Open source" },
+  { href: "#install", label: "Install" },
+];
+---
+
+<header class="site-header" data-site-header>
+  <div class="header-inner">
+    <a class="brand-link" href="#top" aria-label="GrepQuest home">
+      <img src={`${base}brand/grepquest-lockup.svg`} width="192" height="48" alt="GrepQuest" />
+    </a>
+
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      {links.map((link) => <a href={link.href}>{link.label}</a>)}
+    </nav>
+
+    <div class="header-actions">
+      <a class="github-link" href={repository} aria-label="View GrepQuest on GitHub">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d={siGithub.path}></path></svg>
+        <span>GitHub</span>
+      </a>
+      <a class="button button-small" href="#install">Start playing</a>
+    </div>
+
+    <details class="mobile-menu">
+      <summary>Menu</summary>
+      <nav aria-label="Mobile navigation">
+        {links.map((link) => <a href={link.href}>{link.label}</a>)}
+        <a href={repository}>GitHub</a>
+      </nav>
+    </details>
+  </div>
+</header>
+
+<script>
+  const header = document.querySelector<HTMLElement>("[data-site-header]");
+  const updateHeader = () => header?.classList.toggle("is-scrolled", window.scrollY > 24);
+  updateHeader();
+  window.addEventListener("scroll", updateHeader, { passive: true });
+</script>

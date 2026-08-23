@@ -1,0 +1,9 @@
+{
+  "name": "grepquest-ascii-motion-tool",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Pinned development-only Ascii Motion MCP dependency for GrepQuest",
+  "dependencies": {
+    "ascii-motion-mcp": "2.2.0"
+  }
+}

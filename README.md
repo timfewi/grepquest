@@ -1,5 +1,9 @@
 # GrepQuest
 
+![GrepQuest Ranger in the Signal Cellar.][readme-hero]
+
+[readme-hero]: brand/readme/grepquest-ranger-dungeon-banner.png
+
 GrepQuest is a local-first terminal roguelite for learning GNU `grep`. Every
 answer is executed by a deterministic judge; generated text never decides
 whether a solution is correct.
@@ -8,6 +12,10 @@ whether a solution is correct.
 > formats, receipts, and the optional Sui package can still change. The native
 > sandbox is for trusted local development and is not suitable for hosting
 > untrusted users.
+
+![GrepQuest Living Terminal showing the mission, Ranger, and command buffer.][readme-tui]
+
+[readme-tui]: brand/readme/grepquest-living-terminal.png
 
 ## Install and run
 
@@ -47,8 +55,16 @@ The development shell also provides `just` shortcuts for the common workflows:
 ```console
 direnv exec . just --list
 direnv exec . just move-check
+direnv exec . just brand-build
+direnv exec . just ascii-motion --help
 direnv exec . just check
 ```
+
+The pinned ASCII Motion authoring server is development-only and sandboxed to
+`assets/ascii-motion`; the game has no Node.js or browser runtime dependency.
+See [docs/ASCII_MOTION.md](docs/ASCII_MOTION.md) for the offline-first workflow
+and the explicit `--live` browser-sync mode. Set
+`GREPQUEST_REDUCED_MOTION=1` to keep the terminal player character static.
 
 The expensive Firecracker workflows remain explicit as `just vm-build` and
 `just vm-test`; the normal `just check` source gate does not boot a VM.
@@ -129,6 +145,10 @@ The real KVM acceptance test remains opt-in. Run
 guest artifacts, passes their Nix store paths to the test, and starts the real
 microVM test. It does not change host permissions or use `sudo`.
 
+Production hosting requires an external jailer/cgroup supervisor. The
+read-only `just vm-host-check` command and the remaining trust assumptions are
+documented in [docs/FIRECRACKER.md](docs/FIRECRACKER.md).
+
 ## Sui Move agent skills
 
 Portable, source-backed Sui Move skills live under `.agents/skills`. They cover
@@ -142,6 +162,8 @@ back to official Sui sources when the local database is unavailable.
 - Changes: [CHANGELOG.md](CHANGELOG.md)
 - Contributions: [CONTRIBUTING.md](CONTRIBUTING.md)
 - Community standards: [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
+- Governance: [GOVERNANCE.md](GOVERNANCE.md)
+- Support: [SUPPORT.md](SUPPORT.md)
 - Security reporting and current boundaries: [SECURITY.md](SECURITY.md)
 - Release checklist: [docs/RELEASING.md](docs/RELEASING.md)
 - Third-party obligations: [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)

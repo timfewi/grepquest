@@ -1,0 +1,63 @@
+---
+interface Props {
+  mode?: "hero" | "proof";
+}
+
+const { mode = "hero" } = Astro.props;
+---
+
+<figure class:list={["terminal-capture", `terminal-capture-${mode}`]} data-terminal-capture={mode === "hero" ? "hero" : undefined}>
+  <figcaption class="sr-only">
+    GrepQuest room one, First Signal. The mission asks the player to print lines containing ERROR from vault.log.
+    The command grep ERROR vault.log clears the deterministic judge and drops a Brass Pattern Lens.
+  </figcaption>
+
+  <div class="terminal-upper">
+    <div class="tui-panel mission-panel" role="group" aria-labelledby={`mission-title-${mode}`}>
+      <div class="tui-heading" id={`mission-title-${mode}`}>
+        <span>ROOM 1/26 · First Signal</span>
+        <span class="path-label">vault.log</span>
+      </div>
+      <div class="mission-content">
+        <pre aria-hidden="true">+-- SIGNAL CELLAR / ROOM 01 --+
+| @---+---+---[Q]            |
+| target: vault.log          |
+| literal signal lock        |
+| run [............]  0/26   |
++-----------------------------+</pre>
+        <p>Print lines containing <strong>ERROR</strong> from <span class="cyan">vault.log</span>.</p>
+        <p class="terminal-meta">Tags: literal · danger 1/5</p>
+      </div>
+    </div>
+
+    <div class="tui-panel ranger-panel" role="group" aria-labelledby={`ranger-title-${mode}`}>
+      <div class="tui-heading" id={`ranger-title-${mode}`}>
+        <span>RANGER · LV 1</span>
+        <span class="amber">XP 120</span>
+      </div>
+      <dl class="loadout-list">
+        <div><dt>Head</dt><dd><span class="slot-empty">—</span></dd></div>
+        <div><dt>Tool</dt><dd><span class="slot-empty">—</span></dd></div>
+        <div><dt>Body</dt><dd><span class="slot-empty">—</span></dd></div>
+        <div><dt>Charm</dt><dd><span class="slot-empty">—</span></dd></div>
+        <div><dt>Relic</dt><dd><span class="slot-empty">—</span></dd></div>
+      </dl>
+    </div>
+  </div>
+
+  <div class="tui-panel terminal-panel" role="group" aria-labelledby={`terminal-title-${mode}`}>
+    <div class="tui-heading" id={`terminal-title-${mode}`}>TERMINAL</div>
+    <div class="terminal-output" aria-live={mode === "hero" ? "polite" : "off"}>
+      <p class="terminal-command sequence-command"><span aria-hidden="true">$ </span>grep ERROR <span class="cyan">vault.log</span></p>
+      <div class="sequence-match">
+        <p><mark>ERROR</mark> seal broken</p>
+        <p><mark>ERROR</mark> intruder</p>
+      </div>
+      <p class="sequence-clear"><strong>CLEAR +120 XP</strong> — grep prints every input line containing the pattern.</p>
+      <p class="sequence-drop"><strong>DROP <span class="rarity-label">[common]</span> [o] Brass Pattern Lens</strong></p>
+      <span class="terminal-cursor sequence-rest" aria-hidden="true"></span>
+    </div>
+  </div>
+
+  <div class="terminal-footer">enter submit · ctrl+h hint · q quit · motion: GREPQUEST_REDUCED_MOTION=1</div>
+</figure>

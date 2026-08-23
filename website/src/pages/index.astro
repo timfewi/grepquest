@@ -1,0 +1,39 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import CoreLoop from "../components/CoreLoop.astro";
+import ProductProof from "../components/ProductProof.astro";
+import Ranger from "../components/Ranger.astro";
+import Inventory from "../components/Inventory.astro";
+import TrustSection from "../components/TrustSection.astro";
+import OpenSource from "../components/OpenSource.astro";
+import InstallBlock from "../components/InstallBlock.astro";
+import Footer from "../components/Footer.astro";
+
+const title = "GrepQuest — Learn GNU grep through a terminal roguelite";
+const description = "Clear real grep challenges, earn mastery and loot, and learn search skills that hold up outside the game. Free, local-first, and open source.";
+---
+
+<BaseLayout title={title} description={description}>
+  <Header />
+  <main id="main-content">
+    <Hero />
+    <div class="trust-strip" aria-label="GrepQuest fundamentals">
+      <div class="page-shell">
+        <span>Real GNU grep</span>
+        <span>Local-first</span>
+        <span>No account required</span>
+        <span>AI never grades</span>
+      </div>
+    </div>
+    <CoreLoop />
+    <ProductProof />
+    <Ranger />
+    <Inventory />
+    <TrustSection />
+    <OpenSource />
+    <InstallBlock />
+    <Footer />
+  </main>
+</BaseLayout>

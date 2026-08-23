@@ -1,0 +1,127 @@
+---
+import rangerProjectSource from "../../../assets/ascii-motion/projects/grepquest_ranger_ascii.asciimtn?raw";
+
+interface ProjectCell {
+  char: string;
+  color: string;
+}
+
+interface SourceCell extends ProjectCell {
+  x: number;
+  y: number;
+}
+
+interface ColorRun {
+  text: string;
+  color?: string;
+}
+
+const project = JSON.parse(rangerProjectSource);
+const composite = new Map<string, ProjectCell>();
+
+for (const layer of project.layers) {
+  if (!layer.visible || !layer.contentFrames?.length) continue;
+  for (const [coordinate, cell] of Object.entries<ProjectCell>(layer.contentFrames[0].data)) {
+    composite.set(coordinate, cell);
+  }
+}
+
+const sourceCells: SourceCell[] = [...composite.entries()].map(([coordinate, cell]) => {
+  const [x, y] = coordinate.split(",").map(Number);
+  return { x, y, char: cell.char, color: cell.color.toUpperCase() };
+});
+const occupied = new Map(sourceCells.map((cell) => [`${cell.x},${cell.y}`, cell]));
+const minX = Math.min(...sourceCells.map((cell) => cell.x));
+const maxX = Math.max(...sourceCells.map((cell) => cell.x));
+const minY = Math.min(...sourceCells.map((cell) => cell.y)) - 1;
+const maxY = Math.max(...sourceCells.map((cell) => cell.y)) + 1;
+const sourceWidth = maxX - minX + 1;
+const sourceHeight = maxY - minY + 1;
+const blockWidth = Math.max(1, Math.ceil(sourceWidth / 45));
+const blockHeight = Math.max(1, Math.ceil(sourceHeight / 20));
+const outputWidth = Math.ceil(sourceWidth / blockWidth);
+const outputHeight = Math.ceil(sourceHeight / blockHeight);
+const glyphs = [..." .:-=+*#%@"];
+
+function runeInk(character: string): number {
+  if ([" ", ".", ",", ":", "'", "`", "░"].includes(character)) return 1;
+  if (["#", "@", "%", "█", "▓", "▄", "▀"].includes(character)) return 3;
+  return 2;
+}
+
+const asciiRows: ColorRun[][] = [];
+for (let outputY = 0; outputY < outputHeight; outputY++) {
+  const cells: Array<{ char: string; color?: string }> = [];
+  for (let outputX = 0; outputX < outputWidth; outputX++) {
+    const colorCounts = new Map<string, number>();
+    let ink = 0;
+    for (let dy = 0; dy < blockHeight; dy++) {
+      for (let dx = 0; dx < blockWidth; dx++) {
+        const cell = occupied.get(`${minX + outputX * blockWidth + dx},${minY + outputY * blockHeight + dy}`);
+        if (!cell) continue;
+        ink += runeInk(cell.char);
+        colorCounts.set(cell.color, (colorCounts.get(cell.color) ?? 0) + 1);
+      }
+    }
+    if (ink === 0) {
+      cells.push({ char: " " });
+      continue;
+    }
+    const color = [...colorCounts.entries()].sort(([leftColor, leftCount], [rightColor, rightCount]) =>
+      rightCount - leftCount || leftColor.localeCompare(rightColor),
+    )[0][0];
+    const totalInk = blockWidth * blockHeight * 3;
+    const glyphIndex = Math.max(1, Math.min(glyphs.length - 1, Math.floor((ink * (glyphs.length - 1)) / totalInk)));
+    cells.push({ char: glyphs[glyphIndex], color });
+  }
+  while (cells.at(-1)?.char === " ") cells.pop();
+  const runs: ColorRun[] = [];
+  for (const cell of cells) {
+    const previous = runs.at(-1);
+    if (previous && previous.color === cell.color) previous.text += cell.char;
+    else runs.push({ text: cell.char, color: cell.color });
+  }
+  asciiRows.push(runs);
+}
+---
+
+<section class="section ranger-section" aria-labelledby="ranger-section-title">
+  <div class="page-shell ranger-layout">
+    <div class="ranger-copy">
+      <p class="eyebrow">YOUR RANGER · COSMETIC PROGRESSION</p>
+      <h2 id="ranger-section-title">The signal<br />has a face.</h2>
+      <p class="large-copy">
+        Your Ranger carries the search skills you earn from room to room. The full character and the in-terminal
+        ASCII form share one identity; both are cosmetic and never influence the judge.
+      </p>
+      <dl class="ranger-facts">
+        <div><dt>Outside the TUI</dt><dd>Transparent character art</dd></div>
+        <div><dt>Inside the TUI</dt><dd>Responsive ASCII Motion export</dd></div>
+        <div><dt>In the judge</dt><dd>No gameplay advantage</dd></div>
+      </dl>
+    </div>
+
+    <div class="ranger-visuals">
+      <figure class="ranger-portrait">
+        <img
+          src={`${import.meta.env.BASE_URL}images/grepquest-ranger-transparent.png`}
+          width="1024"
+          height="1536"
+          loading="lazy"
+          alt="The GrepQuest Ranger in green, black, and ivory armor with the Q mark on his helmet."
+        />
+        <figcaption>RANGER MODEL · FULL CHARACTER</figcaption>
+      </figure>
+
+      <figure class="ranger-ascii">
+        <div class="ascii-heading"><span>RANGER · LV 1</span><span>MOTION / STATIC FRAME</span></div>
+        <pre aria-hidden="true">{asciiRows.map((row) => (
+          <span class="ascii-row">{row.map((run) => (
+            run.color ? <span style={`color: ${run.color}`}>{run.text}</span> : run.text
+          ))}</span>
+        ))}</pre>
+        <figcaption>Generated from the reviewed 60 × 60 ASCII Motion Ranger source.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
