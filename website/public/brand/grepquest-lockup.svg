@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 320" role="img" aria-labelledby="title desc">
+  <title id="title">GrepQuest</title>
+  <desc id="desc">The Match Door mark beside the GrepQuest name in an angular terminal wordmark.</desc>
+  <g transform="translate(20 20) scale(.55)">
+    <g fill="#F4F1E8">
+      <path d="M80 80h312l40 40v96h-56v-76H136v76H80z"/>
+      <path d="M80 296h56v76h240v-76h56v96l-40 40H120l-40-40z"/>
+      <path d="M24 240h72v32H24zm92 0h48v32h-48z"/>
+    </g>
+    <g fill="#68E36F">
+      <path d="M180 240h44v32h-44zm60 0h44v32h-44zm60 0h46v32h-46z"/>
+      <path fill-rule="evenodd" d="M346 216h70l32 32v70l-18 18 48 48h-48l-38-38h-46l-32-32v-66zm22 32-22 22v22l22 22h26l22-22v-22l-22-22z"/>
+    </g>
+    <path fill="#F6C64A" d="m472 380 16 16-16 16-16-16z"/>
+  </g>
+  <g transform="translate(340 0)" fill="none" stroke="#F4F1E8" stroke-width="18" stroke-linecap="square" stroke-linejoin="bevel">
+    <path d="M60 92H18v136h48v-54H45"/>
+    <path d="M103 228V92h48l20 20v42l-20 20h-48m48 0 28 54"/>
+    <path d="M278 92h-64v136h64m-64-68h48"/>
+    <path d="M321 228V92h48l20 20v48l-20 20h-48"/>
+    <path d="M480 228h-36l-20-20v-96l20-20h36l20 20v96l-20 20m-12-28 34 34"/>
+    <path d="M545 92v116l20 20h28l20-20V92"/>
+    <path d="M722 92h-64v136h64m-64-68h48"/>
+    <path d="M829 108l-16-16h-32l-16 16v36l16 16h32l16 16v36l-16 16h-32l-16-16"/>
+    <path d="M866 92h84m-42 0v136"/>
+  </g>
+</svg>

@@ -1,0 +1,37 @@
+---
+const base = import.meta.env.BASE_URL;
+const repository = "https://github.com/timfewi/grepquest";
+const footerLinks = [
+  { label: "GitHub", href: repository },
+  { label: "README", href: `${repository}/blob/main/README.md` },
+  { label: "Contributing", href: `${repository}/blob/main/CONTRIBUTING.md` },
+  { label: "Security", href: `${repository}/blob/main/SECURITY.md` },
+  { label: "Changelog", href: `${repository}/blob/main/CHANGELOG.md` },
+  { label: "License", href: `${repository}/blob/main/LICENSE` },
+];
+---
+
+<section class="final-cta" aria-labelledby="final-title">
+  <div class="page-shell final-cta-inner">
+    <p class="eyebrow">THE SIGNAL CONTINUES</p>
+    <h2 id="final-title">There is always<br />another signal.</h2>
+    <p>Start in the Signal Cellar, learn one pattern at a time, and help shape the next room.</p>
+    <div class="hero-actions">
+      <a class="button" href="#install">Start playing</a>
+      <a class="button button-secondary" href={`${repository}/blob/main/CONTRIBUTING.md`}>Contribute on GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="page-shell footer-grid">
+    <div>
+      <a class="footer-brand" href="#top"><img src={`${base}brand/grepquest-lockup.svg`} width="224" height="56" alt="GrepQuest" /></a>
+      <p>A local-first grep learning roguelite.</p>
+    </div>
+    <nav aria-label="Footer navigation">
+      {footerLinks.map((link) => <a href={link.href}>{link.label}</a>)}
+    </nav>
+    <p class="license-line">MIT-licensed code · CC BY 4.0 core challenge pack.<br />Built in the open.</p>
+  </div>
+</footer>

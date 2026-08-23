@@ -1,0 +1,36 @@
+---
+const items = [
+  { slot: "Head", rarity: "common", sprite: "[o]", name: "Brass Pattern Lens", note: "Literal matches" },
+  { slot: "Tool", rarity: "common", sprite: "-+>", name: "Rootbound Compass", note: "Recursive search" },
+  { slot: "Body", rarity: "rare", sprite: "/##\\", name: "Mantle of Before & After", note: "Context lines" },
+  { slot: "Charm", rarity: "common", sprite: "(0)", name: "Zero Sigil", note: "Exit codes" },
+  { slot: "Relic", rarity: "epic", sprite: "[E]", name: "ERE Codex", note: "Extended regex" },
+];
+---
+
+<section class="section inventory" aria-labelledby="inventory-title">
+  <div class="page-shell">
+    <div class="section-heading split-heading">
+      <div>
+        <p class="eyebrow">PROGRESSION · COSMETIC LOADOUT</p>
+        <h2 id="inventory-title">Mastery you earn.<br />Gear you remember.</h2>
+      </div>
+      <p>
+        Clear rooms to build real search skills and collect equipment tied to what you learned. Gear shows your
+        progress; it never buys a better score.
+      </p>
+    </div>
+
+    <ul class="inventory-grid">
+      {items.map((item) => (
+        <li class:list={["inventory-item", `rarity-${item.rarity}`]}>
+          <div class="item-topline"><span>{item.slot}</span><span>{item.rarity}</span></div>
+          <span class="item-sprite" aria-hidden="true">{item.sprite}</span>
+          <h3>{item.name}</h3>
+          <p>{item.note}</p>
+        </li>
+      ))}
+    </ul>
+    <p class="inventory-note">Cosmetic, non-tradable loot in the current MVP. Skill—not gear—clears the judge.</p>
+  </div>
+</section>

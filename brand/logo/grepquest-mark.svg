@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">GrepQuest Match Door mark</title>
+  <desc id="desc">An angular dungeon room crossed by a green grep match that forms a Q-shaped exit and reaches an amber loot drop.</desc>
+  <g fill="#F4F1E8">
+    <path d="M80 80h312l40 40v96h-56v-76H136v76H80z"/>
+    <path d="M80 296h56v76h240v-76h56v96l-40 40H120l-40-40z"/>
+    <path d="M24 240h72v32H24zm92 0h48v32h-48z"/>
+  </g>
+  <g fill="#68E36F">
+    <path d="M180 240h44v32h-44zm60 0h44v32h-44zm60 0h46v32h-46z"/>
+    <path fill-rule="evenodd" d="M346 216h70l32 32v70l-18 18 48 48h-48l-38-38h-46l-32-32v-66zm22 32-22 22v22l22 22h26l22-22v-22l-22-22z"/>
+  </g>
+  <path fill="#F6C64A" d="m472 380 16 16-16 16-16-16z"/>
+</svg>

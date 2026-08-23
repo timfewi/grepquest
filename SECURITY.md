@@ -27,6 +27,9 @@ configures no NIC or host filesystem share; mounts the rootfs read-only; and
 exposes only a bounded JSON protocol over vsock. The guest agent drops to
 UID/GID 1000 for GNU grep execution. Firecracker's optional jailer and host
 cgroup hardening remain required before a public multi-user deployment.
+The read-only production host audit and external-supervisor requirements are
+documented in `docs/FIRECRACKER.md`; passing that audit does not turn the
+current in-process development launcher into a production boundary.
 
 OpenRouter is optional and keys remain host-only runtime values. The adapter
 accepts only OpenRouter's official HTTPS endpoint, refuses redirects, requests

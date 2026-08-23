@@ -1,0 +1,36 @@
+---
+const steps = [
+  { number: "01", title: "Enter a room", copy: "Read a practical situation in logs, files, or archives." },
+  { number: "02", title: "Write real grep", copy: "Type the command yourself—there are no multiple-choice shortcuts." },
+  { number: "03", title: "Clear the judge", copy: "Visible and hidden variants check whether the command generalizes." },
+  { number: "04", title: "Build mastery", copy: "Earn XP, cosmetic loot, and later recall challenges." },
+];
+---
+
+<section class="section core-loop" id="how-it-plays" aria-labelledby="loop-title">
+  <div class="page-shell">
+    <div class="section-heading split-heading">
+      <div>
+        <p class="eyebrow">HOW IT PLAYS · CORE LOOP</p>
+        <h2 id="loop-title">One command. One room.<br />One more run.</h2>
+      </div>
+      <p>
+        GrepQuest turns practical search problems into short roguelite runs. Read the room, write a real command,
+        and let deterministic tests decide whether your solution holds up.
+      </p>
+    </div>
+
+    <ol class="room-path">
+      {steps.map((step) => (
+        <li>
+          <span class="path-node" aria-hidden="true">{step.number}</span>
+          <div>
+            <p class="step-number">ROOM {step.number}</p>
+            <h3>{step.title}</h3>
+            <p>{step.copy}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

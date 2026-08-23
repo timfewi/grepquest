@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: If you use GrepQuest in research or teaching, please cite the software.
+title: GrepQuest
+type: software
+authors:
+  - name: GrepQuest contributors
+repository-code: https://github.com/timfewi/grepquest
+url: https://github.com/timfewi/grepquest
+license: MIT
+version: 0.1.0-dev

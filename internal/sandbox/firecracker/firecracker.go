@@ -18,6 +18,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"strconv"
 	"strings"
 	"time"
 
@@ -134,7 +135,7 @@ func (b *Backend) Boot(ctx context.Context, c challenge.Challenge) error {
 		body any
 	}{
 		{"/machine-config", map[string]any{"vcpu_count": b.config.VCPU, "mem_size_mib": b.config.MemoryMiB, "smt": false, "track_dirty_pages": false}},
-		{"/boot-source", map[string]any{"kernel_image_path": b.config.Kernel, "initrd_path": b.config.Initrd, "boot_args": "console=ttyS0 reboot=k panic=1 root=/dev/vda ro init=/sbin/init random.trust_cpu=on quiet"}},
+		{"/boot-source", map[string]any{"kernel_image_path": b.config.Kernel, "initrd_path": b.config.Initrd, "boot_args": "console=ttyS0 reboot=k panic=1 root=/dev/vda ro init=/sbin/init random.trust_cpu=on"}},
 		{"/drives/rootfs", map[string]any{"drive_id": "rootfs", "path_on_host": b.config.RootFS, "is_root_device": true, "is_read_only": true}},
 		{"/vsock", map[string]any{"guest_cid": 3, "uds_path": b.vsockSocket}},
 		{"/actions", map[string]any{"action_type": "InstanceStart"}},
@@ -149,6 +150,10 @@ func (b *Backend) Boot(ctx context.Context, c challenge.Challenge) error {
 		_ = b.Close(context.Background())
 		return fmt.Errorf("guest vsock: %w", err)
 	}
+	if err = b.waitForAgent(bootCtx); err != nil {
+		_ = b.Close(context.Background())
+		return fmt.Errorf("guest agent readiness: %w", err)
+	}
 	guestChallenge := c
 	guestChallenge.HiddenTests = nil
 	if err = b.callAgent(bootCtx, agentRequest{Type: "boot", Challenge: &guestChallenge}, nil); err != nil {
@@ -156,6 +161,24 @@ func (b *Backend) Boot(ctx context.Context, c challenge.Challenge) error {
 		return fmt.Errorf("boot guest agent: %w", err)
 	}
 	return nil
+}
+
+func (b *Backend) waitForAgent(ctx context.Context) error {
+	ticker := time.NewTicker(20 * time.Millisecond)
+	defer ticker.Stop()
+	var lastErr error
+	for {
+		if err := b.callAgent(ctx, agentRequest{Type: "ready"}, nil); err == nil {
+			return nil
+		} else {
+			lastErr = err
+		}
+		select {
+		case <-ctx.Done():
+			return fmt.Errorf("%w (last connection error: %v)", ctx.Err(), lastErr)
+		case <-ticker.C:
+		}
+	}
 }
 
 func (b *Backend) Run(ctx context.Context, command string) (sandbox.ExecutionResult, error) {
@@ -217,7 +240,7 @@ func (b *Backend) callAgent(ctx context.Context, request agentRequest, response 
 	if err != nil {
 		return err
 	}
-	if strings.TrimSpace(status) != "OK 52" && strings.TrimSpace(status) != "OK" {
+	if !validVsockStatus(status) {
 		return fmt.Errorf("vsock rejected connection: %q", strings.TrimSpace(status))
 	}
 	if err = json.NewEncoder(conn).Encode(request); err != nil {
@@ -237,6 +260,15 @@ func (b *Backend) callAgent(ctx context.Context, request agentRequest, response 
 		return nil
 	}
 	return json.NewDecoder(reader).Decode(response)
+}
+
+func validVsockStatus(status string) bool {
+	fields := strings.Fields(status)
+	if len(fields) != 2 || fields[0] != "OK" {
+		return false
+	}
+	port, err := strconv.ParseUint(fields[1], 10, 32)
+	return err == nil && port != 0
 }
 
 func verifyDigest(path, want string) error {

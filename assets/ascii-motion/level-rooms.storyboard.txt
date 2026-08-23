@@ -1,0 +1,17 @@
+ACT 1 / SIGNAL CELLAR
+
++-- SIGNAL CELLAR / ROOM 01 --+
+| @---+---+---[Q]            |
+| target: vault.log           |
+| literal signal lock         |
+| run [............]  0/26    |
++-----------------------------+
+
+ACT 2 / REGEX FOUNDRY
+
++-- REGEX FOUNDRY / ROOM 07 --+
+| @=={ }==[ ]==[Q]          |
+| target: tasks.txt           |
+| pattern forge online        |
+| run [##..........]  6/26    |
++-----------------------------+

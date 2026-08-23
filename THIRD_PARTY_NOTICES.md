@@ -3,6 +3,9 @@
 GrepQuest source code is MIT-licensed. Its Go dependencies retain their own
 licenses, including Bubble Tea, Bubbles, and Lip Gloss (MIT), and modernc.org
 SQLite. Distribution artifacts must include the dependency license texts.
+`just release-bundle` creates a host CLI archive containing the discovered
+top-level Go module license texts, this notice, and the core-pack license.
+Review the generated manifest before publishing it.
 
 The bundled GrepQuest Core Challenge Pack is original project content licensed
 separately under CC-BY-4.0. Redistributions must retain its attribution and the
@@ -19,3 +22,9 @@ Firecracker and the Sui Move framework are Apache-2.0 licensed. Firecracker is
 not currently redistributed by this repository. The Move source links to the
 network's published Sui framework when built or published; the framework's
 license remains independent of GrepQuest's MIT license.
+
+The development shell pins `ascii-motion-mcp` 2.2.0 and its npm dependency
+closure for authoring ASCII assets. `ascii-motion-mcp` is MIT-licensed and is
+not part of the GrepQuest runtime package. Its transitive packages retain their
+own licenses; redistribution of the development package must preserve those
+notices.

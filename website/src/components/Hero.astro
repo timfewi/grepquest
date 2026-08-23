@@ -1,0 +1,65 @@
+---
+import TerminalCapture from "./TerminalCapture.astro";
+---
+
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <div class="signal-texture" aria-hidden="true"><span></span><span></span></div>
+  <div class="hero-grid page-shell">
+    <div class="hero-copy">
+      <p class="eyebrow">OPEN SOURCE · 0.1.0-DEV · LINUX/NIX</p>
+      <h1 id="hero-title">Find the signal.<br /><span>Master the search.</span></h1>
+      <p class="hero-lede">
+        A free, open-source terminal roguelite for learning GNU grep through real commands and deterministic judging.
+      </p>
+      <div class="hero-actions">
+        <a class="button" href="#install">Start playing</a>
+        <a class="button button-secondary" href="https://github.com/timfewi/grepquest">View on GitHub</a>
+      </div>
+      <ul class="hero-trust" aria-label="Product essentials">
+        <li>Local · offline core</li>
+        <li>No account required</li>
+        <li>AI never grades</li>
+      </ul>
+    </div>
+
+    <div class="hero-product">
+      <TerminalCapture />
+      <div class="sequence-controls" data-sequence-controls>
+        <ol class="sequence-rail" aria-label="Room sequence">
+          <li><span>01</span>Room</li>
+          <li><span>02</span>Command</li>
+          <li><span>03</span>Match</li>
+          <li><span>04</span>Clear</li>
+          <li><span>05</span>Drop</li>
+          <li><span>06</span>Rest</li>
+        </ol>
+        <div class="playback-actions">
+          <button type="button" data-pause aria-pressed="false">Pause</button>
+          <button type="button" data-replay>Replay</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const capture = document.querySelector<HTMLElement>("[data-terminal-capture='hero']");
+  const controls = document.querySelector<HTMLElement>("[data-sequence-controls]");
+  const pause = controls?.querySelector<HTMLButtonElement>("[data-pause]");
+  const replay = controls?.querySelector<HTMLButtonElement>("[data-replay]");
+
+  pause?.addEventListener("click", () => {
+    const paused = capture?.classList.toggle("is-paused") ?? false;
+    pause.setAttribute("aria-pressed", String(paused));
+    pause.textContent = paused ? "Resume" : "Pause";
+  });
+
+  replay?.addEventListener("click", () => {
+    if (!capture) return;
+    capture.classList.remove("is-paused", "is-running");
+    void capture.offsetWidth;
+    capture.classList.add("is-running");
+    pause?.setAttribute("aria-pressed", "false");
+    if (pause) pause.textContent = "Pause";
+  });
+</script>

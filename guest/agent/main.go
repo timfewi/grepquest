@@ -79,6 +79,8 @@ func handle(conn io.ReadWriteCloser) {
 		return
 	}
 	switch req.Type {
+	case "ready":
+		_ = json.NewEncoder(conn).Encode(ack{OK: true})
 	case "boot":
 		err := install(req.Challenge)
 		if err != nil {
@@ -223,6 +225,9 @@ type fdConn struct{ fd int }
 
 func (c *fdConn) Read(p []byte) (int, error) {
 	n, err := unix.Read(c.fd, p)
+	if n < 0 {
+		n = 0
+	}
 	if err == nil && n == 0 {
 		return 0, io.EOF
 	}
@@ -232,10 +237,15 @@ func (c *fdConn) Write(p []byte) (int, error) {
 	written := 0
 	for len(p) > 0 {
 		n, err := unix.Write(c.fd, p)
-		written += n
-		p = p[n:]
+		if n > 0 {
+			written += n
+			p = p[n:]
+		}
 		if err != nil {
 			return written, err
+		}
+		if n == 0 {
+			return written, io.ErrUnexpectedEOF
 		}
 	}
 	return written, nil

@@ -1,0 +1,52 @@
+---
+const commands = `nix build path:.#
+./result/bin/grepquest play`;
+---
+
+<section class="section install-section" id="install" aria-labelledby="install-title">
+  <div class="page-shell install-grid">
+    <div>
+      <p class="eyebrow">INSTALL · SUPPORTED PATH</p>
+      <h2 id="install-title">Build locally.<br />Enter the first room.</h2>
+      <p class="large-copy">
+        GrepQuest is currently a pre-release. Linux with Nix is the supported environment today; more platforms
+        are planned.
+      </p>
+      <div class="prerelease-note">
+        <strong>Development build</strong>
+        <span>Commands and challenge formats may still change before public beta.</span>
+      </div>
+    </div>
+
+    <div class="install-console">
+      <div class="install-tab"><span>Linux · Nix</span><span class="supported-label">Supported</span></div>
+      <div class="command-block">
+        <pre><code>{commands}</code></pre>
+        <button class="copy-button" type="button" data-copy={commands}>
+          <span data-copy-label>Copy commands</span>
+        </button>
+      </div>
+      <p>Run these commands from an existing GrepQuest source checkout.</p>
+      <a class="text-link" href="https://github.com/timfewi/grepquest#install-and-run">Read the setup notes</a>
+      <p class="copy-status sr-only" data-copy-status aria-live="polite"></p>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>("[data-copy]").forEach((button) => {
+    button.addEventListener("click", async () => {
+      const label = button.querySelector<HTMLElement>("[data-copy-label]");
+      const status = button.closest(".install-console")?.querySelector<HTMLElement>("[data-copy-status]");
+      try {
+        await navigator.clipboard.writeText(button.dataset.copy ?? "");
+        if (label) label.textContent = "Copied";
+        if (status) status.textContent = "Installation commands copied.";
+      } catch {
+        if (label) label.textContent = "Copy failed";
+        if (status) status.textContent = "Copy failed. Select the commands manually.";
+      }
+      window.setTimeout(() => { if (label) label.textContent = "Copy commands"; }, 2400);
+    });
+  });
+</script>

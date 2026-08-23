@@ -24,3 +24,16 @@ func TestDigestRequiredAndVerified(t *testing.T) {
 		t.Fatal(err)
 	}
 }
+
+func TestValidVsockStatus(t *testing.T) {
+	for _, status := range []string{"OK 52\n", "OK 1073742553\n", "OK 4294967295\n"} {
+		if !validVsockStatus(status) {
+			t.Errorf("valid status rejected: %q", status)
+		}
+	}
+	for _, status := range []string{"OK", "OK 0", "OK -1", "OK 4294967296", "ERR 52", "OK 52 trailing"} {
+		if validVsockStatus(status) {
+			t.Errorf("invalid status accepted: %q", status)
+		}
+	}
+}
