@@ -1,14 +1,12 @@
 module github.com/timfewi/grepquest
 
-go 1.25.0
-
-toolchain go1.25.13
+go 1.26.0
 
 require (
 	charm.land/bubbles/v2 v2.2.0
 	charm.land/bubbletea/v2 v2.0.9
 	charm.land/lipgloss/v2 v2.0.6
-	golang.org/x/sys v0.47.0
+	golang.org/x/sys v0.49.0
 	modernc.org/sqlite v1.57.0
 )
 
